@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>index.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #d5b778;}
+.s3 { color: #bababa;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+index.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!----------------------------------------------------------------------------- 
+program: Developing a back-end 
+author: Anthany Toum 
+course: CIDS 325 
+date: 11/15/2023 
+assignment: #2 
+description: Build a back-end for the cult classic game robotfindskitten that 
+             will allow saving and loading of high scores. 
+notes: The high score table will only work if the program is running, it only 
+       works on a specific server &quot;http://localhost:3000/?#&quot; 
+------------------------------------------------------------------------------&gt;</span>
+<span class="s2">&lt;!DOCTYPE </span><span class="s3">html</span><span class="s2">&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+    <span class="s2">&lt;meta </span><span class="s3">http-equiv</span><span class="s4">=&quot;content-type&quot; </span><span class="s3">content</span><span class="s4">=&quot;text/html; charset=utf-8&quot;</span><span class="s2">/&gt;</span>
+    <span class="s2">&lt;title&gt;</span><span class="s1">Robot Finds Kitten</span><span class="s2">&lt;/title&gt;</span>
+    <span class="s2">&lt;link </span><span class="s3">href</span><span class="s4">=&quot;style.css&quot; </span><span class="s3">rel</span><span class="s4">=&quot;stylesheet&quot; </span><span class="s3">type</span><span class="s4">=&quot;text/css&quot;</span><span class="s2">/&gt;</span>
+<span class="s0">&lt;!----------------------------------------------------------------------------- 
+Lbrary: Jquery, a collection of helpful utilities 
+------------------------------------------------------------------------------&gt;</span>
+    <span class="s2">&lt;script </span><span class="s3">src</span><span class="s4">=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js&quot;</span><span class="s2">&gt;&lt;/script&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+
+<span class="s2">&lt;body </span><span class="s3">onload</span><span class="s4">=&quot;</span><span class="s1">startgame()</span><span class="s4">&quot;</span><span class="s2">&gt;</span>
+<span class="s2">&lt;script </span><span class="s3">src</span><span class="s4">=&quot;script.js&quot;</span><span class="s2">&gt;&lt;/script&gt;</span>
+<span class="s2">&lt;h1&gt;</span><span class="s1">Robot Finds Kitten</span><span class="s2">&lt;/h1&gt;</span>
+<span class="s2">&lt;h2&gt;</span><span class="s1">A Zen Simulation</span><span class="s2">&lt;/h2&gt;</span>
+<span class="s2">&lt;form </span><span class="s3">action</span><span class="s4">=&quot;#&quot; </span><span class="s3">name</span><span class="s4">=&quot;rfk&quot;</span><span class="s2">&gt;</span>
+    <span class="s2">&lt;script </span><span class="s3">type</span><span class="s4">=&quot;text/javascript&quot;</span><span class="s2">&gt;</span>
+        <span class="s1">drawboard();</span>
+    <span class="s2">&lt;/script&gt;</span>
+    <span class="s2">&lt;div&gt;</span>
+        <span class="s2">&lt;textarea </span><span class="s3">rows</span><span class="s4">=&quot;3&quot; </span><span class="s3">cols</span><span class="s4">=&quot;75&quot; </span><span class="s3">readonly</span><span class="s4">=&quot;readonly&quot; </span><span class="s3">id</span><span class="s4">=&quot;stat&quot;</span><span class="s2">&gt;&lt;/textarea&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+    <span class="s2">&lt;div&gt;</span>
+        <span class="s2">&lt;button </span><span class="s3">id</span><span class="s4">=&quot;up&quot; </span><span class="s3">onclick</span><span class="s4">=&quot;</span><span class="s1">move(</span><span class="s4">'up'</span><span class="s1">)</span><span class="s4">&quot;</span><span class="s2">&gt;</span><span class="s1">Up</span><span class="s2">&lt;/button&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+    <span class="s2">&lt;div&gt;</span>
+        <span class="s2">&lt;button </span><span class="s3">id</span><span class="s4">=&quot;left&quot; </span><span class="s3">onclick</span><span class="s4">=&quot;</span><span class="s1">move(</span><span class="s4">'left'</span><span class="s1">)</span><span class="s4">&quot;</span><span class="s2">&gt;</span><span class="s1">Left</span><span class="s2">&lt;/button&gt;</span>
+        <span class="s2">&lt;button </span><span class="s3">id</span><span class="s4">=&quot;right&quot; </span><span class="s3">onclick</span><span class="s4">=&quot;</span><span class="s1">move(</span><span class="s4">'right'</span><span class="s1">)</span><span class="s4">&quot;</span><span class="s2">&gt;</span><span class="s1">Right</span><span class="s2">&lt;/button&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+    <span class="s2">&lt;div&gt;</span>
+        <span class="s2">&lt;button </span><span class="s3">id</span><span class="s4">=&quot;down&quot; </span><span class="s3">onclick</span><span class="s4">=&quot;</span><span class="s1">move(</span><span class="s4">'down'</span><span class="s1">)</span><span class="s4">&quot;</span><span class="s2">&gt;</span><span class="s1">Down</span><span class="s2">&lt;/button&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+<span class="s2">&lt;/form&gt;</span>
+<span class="s2">&lt;form </span><span class="s3">action</span><span class="s4">=&quot;#&quot; </span><span class="s3">name</span><span class="s4">=&quot;hidden&quot;</span><span class="s2">&gt;</span>
+    <span class="s2">&lt;div </span><span class="s3">id</span><span class="s4">=&quot;hidden&quot;</span><span class="s2">&gt;</span>
+        <span class="s2">&lt;input </span><span class="s3">type</span><span class="s4">=&quot;hidden&quot; </span><span class="s3">id</span><span class="s4">=&quot;robotr&quot;</span><span class="s2">/&gt;</span>
+        <span class="s2">&lt;input </span><span class="s3">type</span><span class="s4">=&quot;hidden&quot; </span><span class="s3">id</span><span class="s4">=&quot;robotc&quot;</span><span class="s2">/&gt;</span>
+        <span class="s2">&lt;input </span><span class="s3">type</span><span class="s4">=&quot;hidden&quot; </span><span class="s3">id</span><span class="s4">=&quot;kittens&quot;</span><span class="s2">/&gt;</span>
+        <span class="s2">&lt;script </span><span class="s3">type</span><span class="s4">=&quot;text/javascript&quot;</span><span class="s2">&gt;</span>
+            <span class="s1">hiddenfields();</span>
+        <span class="s2">&lt;/script&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+<span class="s2">&lt;/form&gt;</span>
+
+<span class="s2">&lt;hr/&gt;</span>
+<span class="s2">&lt;p </span><span class="s3">id</span><span class="s4">=&quot;instructions&quot;</span><span class="s2">&gt;</span><span class="s1">In this game, you are robot (#). Your job is to find kitten. This task</span>
+    <span class="s1">is complicated by the existence of various things which are not kitten.</span>
+    <span class="s1">Robot must touch items to determine if they are kitten or not. The game</span>
+    <span class="s1">ends when robotfindskitten. Alternatively, you may end the game by leaving the page.</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">&lt;p&gt;</span><span class="s1">Download the original and find out more from </span><span class="s2">&lt;a </span><span class="s3">href</span><span class="s4">=&quot;http://www.robotfindskitten.org&quot;</span><span class="s2">&gt;</span><span class="s1">robotfindskitten.org</span><span class="s2">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="s2">&lt;hr/&gt;</span>
+<span class="s2">&lt;p&gt;</span><span class="s1">Made by Thom Curtis; visit </span><span class="s2">&lt;a </span><span class="s3">href</span><span class="s4">=&quot;http://www.herdofnerds.net/&quot;</span><span class="s2">&gt;</span><span class="s1">Herd of Nerds</span><span class="s2">&lt;/a&gt;</span><span class="s1">.</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>

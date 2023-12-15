@@ -1,0 +1,511 @@
+<html>
+<head>
+<title>script.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+script.js</font>
+</center></td></tr></table>
+<pre><span class="s0">//overall variables</span>
+<span class="s2">var </span><span class="s1">rownum </span><span class="s3">= </span><span class="s4">20</span><span class="s3">;</span>
+<span class="s2">var </span><span class="s1">colnum </span><span class="s3">= </span><span class="s4">30</span><span class="s3">;</span>
+<span class="s2">var </span><span class="s1">itemnum </span><span class="s3">= </span><span class="s4">15</span><span class="s3">;</span>
+<span class="s2">var </span><span class="s1">waytogo </span><span class="s3">= </span><span class="s5">'</span><span class="s2">\n</span><span class="s5">Way to go robot! You found kitten!'</span><span class="s3">;</span>
+<span class="s2">var </span><span class="s1">newgame </span><span class="s3">= </span><span class="s5">'</span><span class="s2">\n</span><span class="s5">Refresh the page to play again'</span><span class="s3">;</span>
+
+<span class="s2">var </span><span class="s1">colors </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Array</span><span class="s3">(</span><span class="s5">&quot;red&quot;</span><span class="s3">, </span><span class="s5">&quot;blue&quot;</span><span class="s3">, </span><span class="s5">&quot;yellow&quot;</span><span class="s3">, </span><span class="s5">&quot;#00FF00&quot;</span><span class="s3">, </span><span class="s5">&quot;#FF00FF&quot;</span><span class="s3">, </span><span class="s5">&quot;#00FFFF&quot;</span><span class="s3">, </span><span class="s5">&quot;FF9900&quot;</span><span class="s3">);</span>
+
+<span class="s2">var </span><span class="s1">message </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Array</span><span class="s3">(</span><span class="s4">201</span><span class="s3">);</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">0</span><span class="s3">] = </span><span class="s5">'&quot;I pity the fool who mistakes me for kitten!&quot;, sez Mr. T.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">1</span><span class="s3">] = </span><span class="s5">'That</span><span class="s2">\'</span><span class="s5">s just an old tin can.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">2</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s an altar to the horse god.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">3</span><span class="s3">] = </span><span class="s5">'A box of dancing mechanical pencils. They dance! They sing!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">4</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s an old Duke Ellington record.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">5</span><span class="s3">] = </span><span class="s5">'A box of fumigation pellets.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">6</span><span class="s3">] = </span><span class="s5">'A digital clock. It</span><span class="s2">\'</span><span class="s5">s stuck at 2:17 PM.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">7</span><span class="s3">] = </span><span class="s5">'That</span><span class="s2">\'</span><span class="s5">s just a charred human corpse.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">8</span><span class="s3">] = </span><span class="s5">'I don</span><span class="s2">\'</span><span class="s5">t know what that is, but it</span><span class="s2">\'</span><span class="s5">s not kitten.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">9</span><span class="s3">] = </span><span class="s5">'An empty shopping bag. Paper or plastic?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">10</span><span class="s3">] = </span><span class="s5">'Could it be... a big ugly bowling trophy?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">11</span><span class="s3">] = </span><span class="s5">'A coat hanger hovers in thin air. Odd.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">12</span><span class="s3">] = </span><span class="s5">'Not kitten, just a packet of Kool-Aid(tm).'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">13</span><span class="s3">] = </span><span class="s5">'A freshly-baked pumpkin pie.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">14</span><span class="s3">] = </span><span class="s5">'A lone, forgotten comma, sits here, sobbing.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">15</span><span class="s3">] = </span><span class="s5">'ONE HUNDRED THOUSAND CARPET FIBRES!!!!!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">16</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s Richard Nixon</span><span class="s2">\'</span><span class="s5">s nose!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">17</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s Lucy Ricardo. &quot;Aaaah, Ricky!&quot;, she says.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">18</span><span class="s3">] = </span><span class="s5">'You stumble upon Bill Gates</span><span class="s2">\' </span><span class="s5">stand-up act.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">19</span><span class="s3">] = </span><span class="s5">'Just an autographed copy of the Kama Sutra.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">20</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the Will Rogers Highway. Who was Will Rogers, anyway?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">21</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s another robot, more advanced in design than you but strangely immobile.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">22</span><span class="s3">] = </span><span class="s5">'Leonard Richardson is here, asking people to lick him.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">23</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a stupid mask, fashioned after a beagle.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">24</span><span class="s3">] = </span><span class="s5">'Your State Farm Insurance(tm) representative!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">25</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the local draft board.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">26</span><span class="s3">] = </span><span class="s5">'Seven 1/4&quot; screws and a piece of plastic.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">27</span><span class="s3">] = </span><span class="s5">'An 80286 machine.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">28</span><span class="s3">] = </span><span class="s5">'One of those stupid &quot;Homes of the Stars&quot; maps.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">29</span><span class="s3">] = </span><span class="s5">'A signpost saying &quot;TO KITTEN&quot;. It points in no particular direction.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">30</span><span class="s3">] = </span><span class="s5">'A hammock stretched between a tree and a volleyball pole.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">31</span><span class="s3">] = </span><span class="s5">'A Texas Instruments of Destruction calculator.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">32</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a dark, amphorous blob of matter.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">33</span><span class="s3">] = </span><span class="s5">'Just a pincushion.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">34</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a mighty zombie talking about some love and prosperity.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">35</span><span class="s3">] = </span><span class="s5">'&quot;Dear robot, you may have already won our 10 MILLION DOLLAR prize...&quot;'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">36</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s just an object.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">37</span><span class="s3">] = </span><span class="s5">'A mere collection of pixels.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">38</span><span class="s3">] = </span><span class="s5">'A badly dented high-hat cymbal lies on its side here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">39</span><span class="s3">] = </span><span class="s5">'A marijuana brownie.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">40</span><span class="s3">] = </span><span class="s5">'A plush Chewbacca.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">41</span><span class="s3">] = </span><span class="s5">'Daily hunger conditioner from Australasia'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">42</span><span class="s3">] = </span><span class="s5">'Just some stuff.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">43</span><span class="s3">] = </span><span class="s5">'Why are you touching this when you should be finding kitten?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">44</span><span class="s3">] = </span><span class="s5">'A glorious fan of peacock feathers.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">45</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s some compromising photos of Babar the Elephant.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">46</span><span class="s3">] = </span><span class="s5">'A copy of the Weekly World News. Watch out for the chambered nautilus!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">47</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the proverbial wet blanket.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">48</span><span class="s3">] = </span><span class="s5">'A &quot;Get Out of Jail Free&quot; card.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">49</span><span class="s3">] = </span><span class="s5">'An incredibly expensive &quot;Mad About You&quot; collector plate.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">50</span><span class="s3">] = </span><span class="s5">'Paul Moyer</span><span class="s2">\'</span><span class="s5">s necktie.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">51</span><span class="s3">] = </span><span class="s5">'A haircut and a real job. Now you know where to get one!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">52</span><span class="s3">] = </span><span class="s5">'An automated robot-hater. It frowns disapprovingly at you.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">53</span><span class="s3">] = </span><span class="s5">'An automated robot-liker. It smiles at you.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">54</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a black hole. Don</span><span class="s2">\'</span><span class="s5">t fall in!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">55</span><span class="s3">] = </span><span class="s5">'Just a big brick wall.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">56</span><span class="s3">] = </span><span class="s5">'You found kitten! No, just kidding.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">57</span><span class="s3">] = </span><span class="s5">'Heart of Darkness brand pistachio nuts.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">58</span><span class="s3">] = </span><span class="s5">'A smoking branding iron shaped like a 24-pin connector.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">59</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a Java applet.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">60</span><span class="s3">] = </span><span class="s5">'An abandoned used-car lot.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">61</span><span class="s3">] = </span><span class="s5">'A shameless plug for Herd of Nerds: http://www.herdofnerds.net/.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">62</span><span class="s3">] = </span><span class="s5">'Sherlock Holmes</span><span class="s2">\' </span><span class="s5">pipe, upside down.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">63</span><span class="s3">] = </span><span class="s5">'A can of Spam Lite.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">64</span><span class="s3">] = </span><span class="s5">'This is another fine mess you</span><span class="s2">\'</span><span class="s5">ve gotten us into, Stanley.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">65</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s scenery for &quot;Waiting for Godot&quot;.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">66</span><span class="s3">] = </span><span class="s5">'This grain elevator towers high above you.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">67</span><span class="s3">] = </span><span class="s5">'A Mentos wrapper.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">68</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the constellation Pisces.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">69</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a fly on the wall. Hi, fly!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">70</span><span class="s3">] = </span><span class="s5">'This kind of looks like kitten, but it</span><span class="s2">\'</span><span class="s5">s not.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">71</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a banana! Oh, joy!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">72</span><span class="s3">] = </span><span class="s5">'A helicopter has crashed here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">73</span><span class="s3">] = </span><span class="s5">'Carlos Tarango stands here, doing his best impression of Pat Smear.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">74</span><span class="s3">] = </span><span class="s5">'A patch of mushrooms grows here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">75</span><span class="s3">] = </span><span class="s5">'A patch of grape jelly grows here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">76</span><span class="s3">] = </span><span class="s5">'A spindle, and a grindle, and a bucka-wacka-woom!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">77</span><span class="s3">] = </span><span class="s5">'A geyser sprays water high into the air.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">78</span><span class="s3">] = </span><span class="s5">'A toenail? What good is a toenail?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">79</span><span class="s3">] = </span><span class="s5">'You</span><span class="s2">\'</span><span class="s5">ve found the fish! Not that it does you much good in this game.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">80</span><span class="s3">] = </span><span class="s5">'A Buttertonsils bar.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">81</span><span class="s3">] = </span><span class="s5">'One of the few remaining discoes.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">82</span><span class="s3">] = </span><span class="s5">'Ah, the uniform of a Revolutionary-era minuteman.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">83</span><span class="s3">] = </span><span class="s5">'A punch bowl, filled with punch and lemon slices.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">84</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s nothing but a G-thang, baby.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">85</span><span class="s3">] = </span><span class="s5">'IT</span><span class="s2">\'</span><span class="s5">S ALIVE! AH HA HA HA HA!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">86</span><span class="s3">] = </span><span class="s5">'This was no boating accident!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">87</span><span class="s3">] = </span><span class="s5">'Wait! This isn</span><span class="s2">\'</span><span class="s5">t the poker chip! You</span><span class="s2">\'</span><span class="s5">ve been tricked! DAMN YOU, MENDEZ!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">88</span><span class="s3">] = </span><span class="s5">'A livery stable! Get your livery!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">89</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a perpetual immobility machine.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">90</span><span class="s3">] = </span><span class="s5">'&quot;On this spot in 1962, Henry Winkler was sick.&quot;'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">91</span><span class="s3">] = </span><span class="s5">'There</span><span class="s2">\'</span><span class="s5">s nothing here; it</span><span class="s2">\'</span><span class="s5">s just an optical illusion.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">92</span><span class="s3">] = </span><span class="s5">'The World</span><span class="s2">\'</span><span class="s5">s Biggest Motzah Ball!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">93</span><span class="s3">] = </span><span class="s5">'A tribe of cannibals lives here. They eat Malt-O-Meal for breakfast, you know.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">94</span><span class="s3">] = </span><span class="s5">'This appears to be a rather large stack of trashy romance novels.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">95</span><span class="s3">] = </span><span class="s5">'Look out! Exclamation points!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">96</span><span class="s3">] = </span><span class="s5">'A herd of wild coffee mugs slumbers here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">97</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a limbo bar! How low can you go?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">98</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the horizon. Now THAT</span><span class="s2">\'</span><span class="s5">S weird.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">99</span><span class="s3">] = </span><span class="s5">'A vase full of artificial flowers is stuck to the floor here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">100</span><span class="s3">] = </span><span class="s5">'A large snake bars your way.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">101</span><span class="s3">] = </span><span class="s5">'A pair of saloon-style doors swing slowly back and forth here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">102</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s an ordinary bust of Beethoven... but why is it painted green?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">103</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s TV</span><span class="s2">\'</span><span class="s5">s lovable wisecracking Crow! &quot;Bite me!&quot;, he says.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">104</span><span class="s3">] = </span><span class="s5">'Hey, look, it</span><span class="s2">\'</span><span class="s5">s war. What is it good for? Absolutely nothing. Say it again.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">105</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the amazing self-referential thing that</span><span class="s2">\'</span><span class="s5">s not kitten.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">106</span><span class="s3">] = </span><span class="s5">'A flamboyant feather boa. Now you can dress up like Carol Channing!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">107</span><span class="s3">] = </span><span class="s5">'&quot;Sure hope we get some rain soon,&quot; says Farmer Joe.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">108</span><span class="s3">] = </span><span class="s5">'&quot;How in heck can I wash my neck if it ain</span><span class="s2">\'</span><span class="s5">t gonna rain no more?&quot; asks Farmer Al.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">109</span><span class="s3">] = </span><span class="s5">'&quot;Topsoil</span><span class="s2">\'</span><span class="s5">s all gone, ma,&quot; weeps Lil</span><span class="s2">\' </span><span class="s5">Greg.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">110</span><span class="s3">] = </span><span class="s5">'This is a large brown bear. Oddly enough, it</span><span class="s2">\'</span><span class="s5">s currently peeing in the woods.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">111</span><span class="s3">] = </span><span class="s5">'A team of arctic explorers is camped here.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">112</span><span class="s3">] = </span><span class="s5">'This object here appears to be Louis Farrakhan</span><span class="s2">\'</span><span class="s5">s bow tie.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">113</span><span class="s3">] = </span><span class="s5">'This is the world-famous Chain of Jockstraps.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">114</span><span class="s3">] = </span><span class="s5">'A trash compactor, compacting away.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">115</span><span class="s3">] = </span><span class="s5">'This toaster strudel is riddled with bullet holes!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">116</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a hologram of a crashed helicopter.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">117</span><span class="s3">] = </span><span class="s5">'This is a television. On screen you see a robot strangely similar to yourself.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">118</span><span class="s3">] = </span><span class="s5">'This balogna has a first name, it</span><span class="s2">\'</span><span class="s5">s R-A-N-C-I-D.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">119</span><span class="s3">] = </span><span class="s5">'A salmon hatchery? Look again. It</span><span class="s2">\'</span><span class="s5">s merely a single salmon.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">120</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a rim shot. Ba-da-boom!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">121</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s creepy and it</span><span class="s2">\'</span><span class="s5">s kooky, mysterious and spooky. It</span><span class="s2">\'</span><span class="s5">s also somewhat ooky.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">122</span><span class="s3">] = </span><span class="s5">'This is an anagram.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">123</span><span class="s3">] = </span><span class="s5">'This object is like an analogy.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">124</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a symbol. You see in it a model for all symbols everywhere.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">125</span><span class="s3">] = </span><span class="s5">'The object pushes back at you.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">126</span><span class="s3">] = </span><span class="s5">'A traffic signal. It appears to have been recently vandalized.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">127</span><span class="s3">] = </span><span class="s5">'&quot;There is no kitten!&quot; cackles the old crone. You are shocked by her blasphemy.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">128</span><span class="s3">] = </span><span class="s5">'This is a Lagrange point. Don</span><span class="s2">\'</span><span class="s5">t come too close now.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">129</span><span class="s3">] = </span><span class="s5">'The dirty old tramp bemoans the loss of his harmonica.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">130</span><span class="s3">] = </span><span class="s5">'Look, it</span><span class="s2">\'</span><span class="s5">s Fanny the Irishman!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">131</span><span class="s3">] = </span><span class="s5">'What in blazes is this?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">132</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the instruction manual for a previous version of this game.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">133</span><span class="s3">] = </span><span class="s5">'A brain cell. Oddly enough, it seems to be functioning.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">134</span><span class="s3">] = </span><span class="s5">'Tea and/or crumpets.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">135</span><span class="s3">] = </span><span class="s5">'This jukebox has nothing but Cliff Richards albums in it.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">136</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a Quaker Oatmeal tube, converted into a drum.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">137</span><span class="s3">] = </span><span class="s5">'This is a remote control. Being a robot, you keep a wide berth.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">138</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a roll of industrial-strength copper wire.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">139</span><span class="s3">] = </span><span class="s5">'Oh boy! Grub! Er, grubs.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">140</span><span class="s3">] = </span><span class="s5">'A puddle of mud, where the mudskippers play.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">141</span><span class="s3">] = </span><span class="s5">'Plenty of nothing.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">142</span><span class="s3">] = </span><span class="s5">'Look at that, it</span><span class="s2">\'</span><span class="s5">s the Crudmobile.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">143</span><span class="s3">] = </span><span class="s5">'Just Walter Mattheau and Jack Lemmon.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">144</span><span class="s3">] = </span><span class="s5">'Two crepes, two crepes in a box.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">145</span><span class="s3">] = </span><span class="s5">'An autographed copy of &quot;Primary Colors&quot;, by Anonymous.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">146</span><span class="s3">] = </span><span class="s5">'Another rabbit? That</span><span class="s2">\'</span><span class="s5">s three today!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">147</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a segmentation fault. Core dumped, by the way.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">148</span><span class="s3">] = </span><span class="s5">'A historical marker showing the actual location of /dev/null.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">149</span><span class="s3">] = </span><span class="s5">'Thar</span><span class="s2">\'</span><span class="s5">s Mobius Dick, the convoluted whale. Arrr!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">150</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a charcoal briquette, smoking away.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">151</span><span class="s3">] = </span><span class="s5">'A pizza, melting in the sun.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">152</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a &quot;HOME ALONE 2: Lost in New York&quot; novelty cup.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">153</span><span class="s3">] = </span><span class="s5">'A stack of 7 inch floppies wobbles precariously.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">154</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s nothing but a corrupted floppy. Coaster anyone?'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">155</span><span class="s3">] = </span><span class="s5">'A section of glowing phosphor cells sings a song of radiation to you.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">156</span><span class="s3">] = </span><span class="s5">'This TRS-80 III is eerily silent.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">157</span><span class="s3">] = </span><span class="s5">'A toilet bowl occupies this space.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">158</span><span class="s3">] = </span><span class="s5">'This peg-leg is stuck in a knothole!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">159</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a solitary vacuum tube.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">160</span><span class="s3">] = </span><span class="s5">'This corroded robot is clutching a mitten.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">161</span><span class="s3">] = </span><span class="s5">'&quot;Hi, I</span><span class="s2">\'</span><span class="s5">m Anson Williams, TV</span><span class="s2">\'</span><span class="s5">s </span><span class="s2">\'</span><span class="s5">Potsy</span><span class="s2">\'</span><span class="s5">.&quot;'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">162</span><span class="s3">] = </span><span class="s5">'This subwoofer was blown out in 1974.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">163</span><span class="s3">] = </span><span class="s5">'Three half-pennies and a wooden nickel.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">164</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the missing chapter to &quot;A Clockwork Orange&quot;.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">165</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a burrito stand flyer. &quot;Taqueria El Ranchito&quot;.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">166</span><span class="s3">] = </span><span class="s5">'This smiling family is happy because they eat LARD.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">167</span><span class="s3">] = </span><span class="s5">'Roger Avery, persona un famoso de los Estados Unidos.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">168</span><span class="s3">] = </span><span class="s5">'Ne</span><span class="s2">\'</span><span class="s5">er but a potted plant.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">169</span><span class="s3">] = </span><span class="s5">'A parrot, kipping on its back.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">170</span><span class="s3">] = </span><span class="s5">'A forgotten telephone switchboard.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">171</span><span class="s3">] = </span><span class="s5">'A forgotten telephone switchboard operator.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">172</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s an automated robot-disdainer. It pretends you</span><span class="s2">\'</span><span class="s5">re not there.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">173</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a portable hole. A sign reads: &quot;Closed for the winter&quot;.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">174</span><span class="s3">] = </span><span class="s5">'Just a moldy loaf of bread.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">175</span><span class="s3">] = </span><span class="s5">'A little glass tub of Carmex. ($.89) Too bad you have no lips.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">176</span><span class="s3">] = </span><span class="s5">'A Swiss-Army knife. All of its appendages are out. (toothpick lost)'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">177</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a zen simulation, trapped within an ASCII character.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">178</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a copy of &quot;The Rubaiyat of Spike Schudy&quot;.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">179</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s &quot;War and Peace&quot; (unabridged, very small print).'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">180</span><span class="s3">] = </span><span class="s5">'A willing, ripe tomato bemoans your inability to digest fruit.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">181</span><span class="s3">] = </span><span class="s5">'A robot comedian. You feel amused.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">182</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s KITT, the talking car.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">183</span><span class="s3">] = </span><span class="s5">'Here</span><span class="s2">\'</span><span class="s5">s Pete Peterson. His batteries seem to have long gone dead.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">184</span><span class="s3">] = </span><span class="s5">'&quot;Blup, blup, blup&quot;, says the mud pot.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">185</span><span class="s3">] = </span><span class="s5">'More grist for the mill.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">186</span><span class="s3">] = </span><span class="s5">'Grind </span><span class="s2">\'</span><span class="s5">em up, spit </span><span class="s2">\'</span><span class="s5">em out, they</span><span class="s2">\'</span><span class="s5">re twigs.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">187</span><span class="s3">] = </span><span class="s5">'The boom box cranks out an old Ethel Merman tune.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">188</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s &quot;Finding kitten&quot;, published by O</span><span class="s2">\'</span><span class="s5">Reilly and Associates.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">189</span><span class="s3">] = </span><span class="s5">'Pumpkin pie spice.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">190</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the Bass-Matic </span><span class="s2">\'</span><span class="s5">76! Mmm, that</span><span class="s2">\'</span><span class="s5">s good bass!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">191</span><span class="s3">] = </span><span class="s5">'&quot;Lend us a fiver </span><span class="s2">\'</span><span class="s5">til Thursday&quot;, pleas Andy Capp.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">192</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s a tape of </span><span class="s2">\'</span><span class="s5">70s rock. All original hits! All original artists!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">193</span><span class="s3">] = </span><span class="s5">'You</span><span class="s2">\'</span><span class="s5">ve found the fabled America Online disk graveyard!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">194</span><span class="s3">] = </span><span class="s5">'Empty jewelboxes litter the landscape.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">195</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s the astounding meta-object.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">196</span><span class="s3">] = </span><span class="s5">'Ed McMahon stands here, lost in thought. Seeing you, he bellows, &quot;YES SIR!&quot;'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">197</span><span class="s3">] = </span><span class="s5">'...thingy???'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">198</span><span class="s3">] = </span><span class="s5">'It</span><span class="s2">\'</span><span class="s5">s 1000 secrets the government doesn</span><span class="s2">\'</span><span class="s5">t want you to know!'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">199</span><span class="s3">] = </span><span class="s5">'The letters O and R.'</span><span class="s3">;</span>
+<span class="s1">message</span><span class="s3">[</span><span class="s4">200</span><span class="s3">] = </span><span class="s5">'A magical... magic thing.'</span><span class="s3">;</span>
+
+<span class="s2">var </span><span class="s1">symbol </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Array</span><span class="s3">(</span><span class="s4">88</span><span class="s3">);</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">0</span><span class="s3">] = </span><span class="s5">'0'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">1</span><span class="s3">] = </span><span class="s5">'1'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">2</span><span class="s3">] = </span><span class="s5">'2'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">3</span><span class="s3">] = </span><span class="s5">'3'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">4</span><span class="s3">] = </span><span class="s5">'4'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">5</span><span class="s3">] = </span><span class="s5">'5'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">6</span><span class="s3">] = </span><span class="s5">'6'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">7</span><span class="s3">] = </span><span class="s5">'7'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">8</span><span class="s3">] = </span><span class="s5">'8'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">9</span><span class="s3">] = </span><span class="s5">'9'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">10</span><span class="s3">] = </span><span class="s5">','</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">11</span><span class="s3">] = </span><span class="s5">'a'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">12</span><span class="s3">] = </span><span class="s5">'b'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">13</span><span class="s3">] = </span><span class="s5">'c'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">14</span><span class="s3">] = </span><span class="s5">'d'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">15</span><span class="s3">] = </span><span class="s5">'e'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">16</span><span class="s3">] = </span><span class="s5">'f'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">17</span><span class="s3">] = </span><span class="s5">'g'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">18</span><span class="s3">] = </span><span class="s5">'h'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">19</span><span class="s3">] = </span><span class="s5">'i'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">20</span><span class="s3">] = </span><span class="s5">'j'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">21</span><span class="s3">] = </span><span class="s5">'k'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">22</span><span class="s3">] = </span><span class="s5">'l'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">23</span><span class="s3">] = </span><span class="s5">'m'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">24</span><span class="s3">] = </span><span class="s5">'n'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">25</span><span class="s3">] = </span><span class="s5">'o'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">26</span><span class="s3">] = </span><span class="s5">'p'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">27</span><span class="s3">] = </span><span class="s5">'q'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">28</span><span class="s3">] = </span><span class="s5">'r'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">29</span><span class="s3">] = </span><span class="s5">'s'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">30</span><span class="s3">] = </span><span class="s5">'t'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">31</span><span class="s3">] = </span><span class="s5">'u'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">32</span><span class="s3">] = </span><span class="s5">'v'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">33</span><span class="s3">] = </span><span class="s5">'w'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">34</span><span class="s3">] = </span><span class="s5">'x'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">35</span><span class="s3">] = </span><span class="s5">'y'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">36</span><span class="s3">] = </span><span class="s5">'z'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">37</span><span class="s3">] = </span><span class="s5">'A'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">38</span><span class="s3">] = </span><span class="s5">'B'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">39</span><span class="s3">] = </span><span class="s5">'C'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">40</span><span class="s3">] = </span><span class="s5">'D'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">41</span><span class="s3">] = </span><span class="s5">'E'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">42</span><span class="s3">] = </span><span class="s5">'F'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">43</span><span class="s3">] = </span><span class="s5">'G'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">44</span><span class="s3">] = </span><span class="s5">'H'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">45</span><span class="s3">] = </span><span class="s5">'I'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">46</span><span class="s3">] = </span><span class="s5">'J'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">47</span><span class="s3">] = </span><span class="s5">'K'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">48</span><span class="s3">] = </span><span class="s5">'L'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">49</span><span class="s3">] = </span><span class="s5">'M'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">50</span><span class="s3">] = </span><span class="s5">'N'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">51</span><span class="s3">] = </span><span class="s5">'O'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">52</span><span class="s3">] = </span><span class="s5">'&lt;'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">53</span><span class="s3">] = </span><span class="s5">'P'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">54</span><span class="s3">] = </span><span class="s5">'Q'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">55</span><span class="s3">] = </span><span class="s5">'R'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">56</span><span class="s3">] = </span><span class="s5">'S'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">57</span><span class="s3">] = </span><span class="s5">'T'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">58</span><span class="s3">] = </span><span class="s5">'U'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">59</span><span class="s3">] = </span><span class="s5">'V'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">60</span><span class="s3">] = </span><span class="s5">'W'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">61</span><span class="s3">] = </span><span class="s5">'X'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">62</span><span class="s3">] = </span><span class="s5">'Y'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">63</span><span class="s3">] = </span><span class="s5">'Z'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">64</span><span class="s3">] = </span><span class="s5">'!'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">65</span><span class="s3">] = </span><span class="s5">'£'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">66</span><span class="s3">] = </span><span class="s5">'$'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">67</span><span class="s3">] = </span><span class="s5">'|'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">68</span><span class="s3">] = </span><span class="s5">'%'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">69</span><span class="s3">] = </span><span class="s5">'^'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">70</span><span class="s3">] = </span><span class="s5">'&amp;'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">71</span><span class="s3">] = </span><span class="s5">'*'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">72</span><span class="s3">] = </span><span class="s5">'('</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">73</span><span class="s3">] = </span><span class="s5">')'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">74</span><span class="s3">] = </span><span class="s5">'-'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">75</span><span class="s3">] = </span><span class="s5">'+'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">76</span><span class="s3">] = </span><span class="s5">'='</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">77</span><span class="s3">] = </span><span class="s5">'['</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">78</span><span class="s3">] = </span><span class="s5">']'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">79</span><span class="s3">] = </span><span class="s5">'{'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">80</span><span class="s3">] = </span><span class="s5">'}'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">81</span><span class="s3">] = </span><span class="s5">'~'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">82</span><span class="s3">] = </span><span class="s5">'@'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">83</span><span class="s3">] = </span><span class="s5">'.'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">84</span><span class="s3">] = </span><span class="s5">':'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">85</span><span class="s3">] = </span><span class="s5">'?'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">86</span><span class="s3">] = </span><span class="s5">'/'</span><span class="s3">;</span>
+<span class="s1">symbol</span><span class="s3">[</span><span class="s4">87</span><span class="s3">] = </span><span class="s5">'&gt;'</span><span class="s3">;</span>
+
+<span class="s2">function </span><span class="s1">drawboard</span><span class="s3">() {</span>
+    <span class="s0">//write the cells</span>
+    <span class="s2">for </span><span class="s3">(</span><span class="s1">i </span><span class="s3">= </span><span class="s4">0</span><span class="s3">; </span><span class="s1">i </span><span class="s3">&lt; </span><span class="s1">rownum</span><span class="s3">; </span><span class="s1">i</span><span class="s3">++) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;div id=&quot;row' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'&quot;&gt;'</span><span class="s3">);</span>
+        <span class="s2">for </span><span class="s3">(</span><span class="s1">j </span><span class="s3">= </span><span class="s4">0</span><span class="s3">; </span><span class="s1">j </span><span class="s3">&lt; </span><span class="s1">colnum</span><span class="s3">; </span><span class="s1">j</span><span class="s3">++) {</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;input type=&quot;text&quot; readonly=&quot;readonly&quot; id=&quot;r' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">j </span><span class="s3">+ </span><span class="s5">'&quot; /&gt;'</span><span class="s3">);</span>
+        <span class="s3">}</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;/div&gt;'</span><span class="s3">);</span>
+    <span class="s3">}</span>
+<span class="s3">}</span>
+
+<span class="s2">function </span><span class="s1">hiddenfields</span><span class="s3">() {</span>
+    <span class="s0">//make sure we can store info</span>
+    <span class="s2">for </span><span class="s3">(</span><span class="s1">i </span><span class="s3">= </span><span class="s4">0</span><span class="s3">; </span><span class="s1">i </span><span class="s3">&lt; </span><span class="s1">itemnum</span><span class="s3">; </span><span class="s1">i</span><span class="s3">++) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;input type=&quot;hidden&quot; id=&quot;item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'r&quot; /&gt;'</span><span class="s3">);</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;input type=&quot;hidden&quot; id=&quot;item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'c&quot; /&gt;'</span><span class="s3">);</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">write</span><span class="s3">(</span><span class="s5">'&lt;input type=&quot;hidden&quot; id=&quot;item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'m&quot; /&gt;'</span><span class="s3">);</span>
+    <span class="s3">}</span>
+<span class="s3">}</span>
+
+<span class="s2">function </span><span class="s1">pickmessage</span><span class="s3">() {</span>
+    <span class="s0">//make sure no message is used more than once</span>
+    <span class="s2">var </span><span class="s1">mess </span><span class="s3">= </span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">message</span><span class="s3">.</span><span class="s1">length </span><span class="s3">- </span><span class="s4">1</span><span class="s3">));</span>
+    <span class="s2">for </span><span class="s3">(</span><span class="s1">a </span><span class="s3">= </span><span class="s4">1</span><span class="s3">; </span><span class="s1">a </span><span class="s3">&lt; </span><span class="s1">i</span><span class="s3">; </span><span class="s1">a</span><span class="s3">++) {</span>
+        <span class="s2">if </span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">a </span><span class="s3">+ </span><span class="s5">'m'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">== </span><span class="s1">mess</span><span class="s3">) {</span>
+            <span class="s1">pickmessage</span><span class="s3">();</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+    <span class="s2">return </span><span class="s1">mess</span><span class="s3">;</span>
+<span class="s3">}</span>
+
+<span class="s2">function </span><span class="s1">additem</span><span class="s3">(</span><span class="s1">type</span><span class="s3">) {</span>
+    <span class="s0">//pick a symbol for the object</span>
+    <span class="s2">var </span><span class="s1">itemsym </span><span class="s3">= </span><span class="s1">symbol</span><span class="s3">[</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">symbol</span><span class="s3">.</span><span class="s1">length </span><span class="s3">- </span><span class="s4">1</span><span class="s3">))];</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">type </span><span class="s3">== </span><span class="s5">'robot'</span><span class="s3">) {</span>
+        <span class="s1">itemsym </span><span class="s3">= </span><span class="s5">'#'</span><span class="s3">;</span>
+    <span class="s3">}</span>
+
+    <span class="s0">//where to put it</span>
+    <span class="s1">row </span><span class="s3">= </span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">rownum </span><span class="s3">- </span><span class="s4">1</span><span class="s3">));</span>
+    <span class="s1">col </span><span class="s3">= </span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">colnum </span><span class="s3">- </span><span class="s4">1</span><span class="s3">));</span>
+
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">row </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">col</span><span class="s3">).</span><span class="s1">value </span><span class="s3">== </span><span class="s5">''</span><span class="s3">) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">row </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">col</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">itemsym</span><span class="s3">;</span>
+    <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+        <span class="s1">additem</span><span class="s3">(</span><span class="s1">type</span><span class="s3">);</span>
+    <span class="s3">}</span>
+
+    <span class="s0">//add the relevant information for each item</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">type </span><span class="s3">== </span><span class="s5">'robot'</span><span class="s3">) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotr'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">row</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotc'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">col</span><span class="s3">;</span>
+    <span class="s3">}</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">i </span><span class="s3">== </span><span class="s4">0</span><span class="s3">) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item0r'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">row</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item0c'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">col</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item0m'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s5">'k'</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">row </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">col</span><span class="s3">).</span><span class="s1">style</span><span class="s3">.</span><span class="s1">color </span><span class="s3">= </span><span class="s1">colors</span><span class="s3">[</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">colors</span><span class="s3">.</span><span class="s1">length </span><span class="s3">- </span><span class="s4">1</span><span class="s3">))];</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'kittens'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">itemsym</span><span class="s3">;</span>
+    <span class="s3">}</span>
+    <span class="s2">if </span><span class="s3">((</span><span class="s1">i </span><span class="s3">!= </span><span class="s4">0</span><span class="s3">) &amp;&amp; !(</span><span class="s1">type </span><span class="s3">== </span><span class="s5">'robot'</span><span class="s3">)) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'r'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">row</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'c'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">col</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">i </span><span class="s3">+ </span><span class="s5">'m'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">pickmessage</span><span class="s3">();</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">row </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">col</span><span class="s3">).</span><span class="s1">style</span><span class="s3">.</span><span class="s1">color </span><span class="s3">= </span><span class="s1">colors</span><span class="s3">[</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">round</span><span class="s3">(</span><span class="s1">Math</span><span class="s3">.</span><span class="s1">random</span><span class="s3">() * (</span><span class="s1">colors</span><span class="s3">.</span><span class="s1">length </span><span class="s3">- </span><span class="s4">1</span><span class="s3">))];</span>
+    <span class="s3">}</span>
+<span class="s3">}</span>
+
+<span class="s2">function </span><span class="s1">move</span><span class="s3">(</span><span class="s1">direction</span><span class="s3">) {</span>
+    <span class="s0">//get robot's location</span>
+    <span class="s2">var </span><span class="s1">row </span><span class="s3">= </span><span class="s1">parseInt</span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotr'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">);</span>
+    <span class="s2">var </span><span class="s1">col </span><span class="s3">= </span><span class="s1">parseInt</span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotc'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">);</span>
+
+    <span class="s0">//where are we going?</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">direction </span><span class="s3">== </span><span class="s5">'up'</span><span class="s3">) {</span>
+        <span class="s2">var </span><span class="s1">rchange </span><span class="s3">= </span><span class="s1">row </span><span class="s3">- </span><span class="s4">1</span><span class="s3">;</span>
+        <span class="s2">var </span><span class="s1">cchange </span><span class="s3">= </span><span class="s1">col</span><span class="s3">;</span>
+    <span class="s3">}</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">direction </span><span class="s3">== </span><span class="s5">'left'</span><span class="s3">) {</span>
+        <span class="s2">var </span><span class="s1">rchange </span><span class="s3">= </span><span class="s1">row</span><span class="s3">;</span>
+        <span class="s2">var </span><span class="s1">cchange </span><span class="s3">= </span><span class="s1">col </span><span class="s3">- </span><span class="s4">1</span><span class="s3">;</span>
+    <span class="s3">}</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">direction </span><span class="s3">== </span><span class="s5">'down'</span><span class="s3">) {</span>
+        <span class="s2">var </span><span class="s1">rchange </span><span class="s3">= </span><span class="s1">row </span><span class="s3">+ </span><span class="s4">1</span><span class="s3">;</span>
+        <span class="s2">var </span><span class="s1">cchange </span><span class="s3">= </span><span class="s1">col</span><span class="s3">;</span>
+    <span class="s3">}</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">direction </span><span class="s3">== </span><span class="s5">'right'</span><span class="s3">) {</span>
+        <span class="s2">var </span><span class="s1">rchange </span><span class="s3">= </span><span class="s1">row</span><span class="s3">;</span>
+        <span class="s2">var </span><span class="s1">cchange </span><span class="s3">= </span><span class="s1">col </span><span class="s3">+ </span><span class="s4">1</span><span class="s3">;</span>
+    <span class="s3">}</span>
+
+    <span class="s0">//move robot into empty squares</span>
+    <span class="s2">if </span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">rchange </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">cchange</span><span class="s3">).</span><span class="s1">value </span><span class="s3">== </span><span class="s5">''</span><span class="s3">) {</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotr'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">rchange</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'robotc'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">cchange</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">rchange </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">cchange</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s5">'#'</span><span class="s3">;</span>
+        <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'r' </span><span class="s3">+ </span><span class="s1">row </span><span class="s3">+ </span><span class="s5">'c' </span><span class="s3">+ </span><span class="s1">col</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s5">''</span><span class="s3">;</span>
+
+<span class="s0">//*****************************************************************************</span>
+<span class="s0">//function:                     window.stepTracker</span>
+<span class="s0">//purpose: keeps track of how many steps taken window.stepTracker is null the</span>
+<span class="s0">//         first time we move window.stepTracker and 0 is the operand while ??</span>
+<span class="s0">//         is the operator, which produces the input.</span>
+
+        <span class="s1">window</span><span class="s3">.</span><span class="s1">stepTracker </span><span class="s3">= (</span><span class="s1">window</span><span class="s3">.</span><span class="s1">stepTracker </span><span class="s3">?? </span><span class="s4">0</span><span class="s3">) + </span><span class="s4">1</span><span class="s3">;</span>
+        <span class="s1">console</span><span class="s3">.</span><span class="s1">log</span><span class="s3">(</span><span class="s1">window</span><span class="s3">.</span><span class="s1">stepTracker</span><span class="s3">);</span>
+    <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+        <span class="s0">//write messages for squares with items</span>
+        <span class="s2">for </span><span class="s3">(</span><span class="s1">a </span><span class="s3">= </span><span class="s4">0</span><span class="s3">; </span><span class="s1">a </span><span class="s3">&lt; </span><span class="s1">itemnum</span><span class="s3">; </span><span class="s1">a</span><span class="s3">++) {</span>
+            <span class="s2">if </span><span class="s3">((</span><span class="s1">rchange </span><span class="s3">== </span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">a </span><span class="s3">+ </span><span class="s5">'r'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">) &amp;&amp; (</span><span class="s1">cchange </span><span class="s3">== </span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">a </span><span class="s3">+ </span><span class="s5">'c'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">)) {</span>
+                <span class="s2">var </span><span class="s1">thisitem </span><span class="s3">= </span><span class="s1">a</span><span class="s3">;</span>
+            <span class="s3">}</span>
+        <span class="s3">}</span>
+
+<span class="s0">// win condition</span>
+        <span class="s2">if </span><span class="s3">(</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">thisitem </span><span class="s3">+ </span><span class="s5">'m'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">!= </span><span class="s5">'k'</span><span class="s3">) {</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'stat'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s1">message</span><span class="s3">[</span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'item' </span><span class="s3">+ </span><span class="s1">thisitem </span><span class="s3">+ </span><span class="s5">'m'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">];</span>
+        <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+            <span class="s0">//way to go robot!</span>
+
+
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'up'</span><span class="s3">).</span><span class="s1">disabled </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'left'</span><span class="s3">).</span><span class="s1">disabled </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'right'</span><span class="s3">).</span><span class="s1">disabled </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'down'</span><span class="s3">).</span><span class="s1">disabled </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+            <span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'stat'</span><span class="s3">).</span><span class="s1">value </span><span class="s3">= </span><span class="s5">'#      ' </span><span class="s3">+ </span><span class="s1">document</span><span class="s3">.</span><span class="s1">getElementById</span><span class="s3">(</span><span class="s5">'kittens'</span><span class="s3">).</span><span class="s1">value</span><span class="s3">;</span>
+            <span class="s1">setTimeout</span><span class="s3">(</span><span class="s5">&quot;document.getElementById('stat').value = ' #    ' + document.getElementById('kittens').value&quot;</span><span class="s3">, </span><span class="s4">1000</span><span class="s3">);</span>
+            <span class="s1">setTimeout</span><span class="s3">(</span><span class="s5">&quot;document.getElementById('stat').value = '  #  ' + document.getElementById('kittens').value&quot;</span><span class="s3">, </span><span class="s4">2000</span><span class="s3">);</span>
+            <span class="s1">setTimeout</span><span class="s3">(</span><span class="s5">&quot;document.getElementById('stat').value = '   #' + document.getElementById('kittens').value + waytogo + newgame&quot;</span><span class="s3">, </span><span class="s4">3000</span><span class="s3">);</span>
+
+<span class="s0">//*****************************************************************************</span>
+<span class="s0">//function:                     setTimeout</span>
+<span class="s0">//purpose: runs the supplied code after 4000 milliseconds (adding delay)</span>
+            <span class="s1">setTimeout</span><span class="s3">(</span><span class="s1">async </span><span class="s3">() =&gt; {</span>
+                <span class="s2">const </span><span class="s1">initials </span><span class="s3">= </span><span class="s1">prompt</span><span class="s3">(</span><span class="s5">&quot;Congratulations! You win! What are your initials?&quot;</span><span class="s3">);</span>
+                <span class="s2">const </span><span class="s1">highscores </span><span class="s3">= </span><span class="s2">await </span><span class="s3">(</span><span class="s2">await </span><span class="s1">fetch</span><span class="s3">(</span><span class="s5">'/api/register_highscore'</span><span class="s3">, {</span>
+                    <span class="s1">body</span><span class="s3">: </span><span class="s1">JSON</span><span class="s3">.</span><span class="s1">stringify</span><span class="s3">({</span>
+                        <span class="s1">score</span><span class="s3">: </span><span class="s1">window</span><span class="s3">.</span><span class="s1">stepTracker</span><span class="s3">,</span>
+                        <span class="s1">initials</span><span class="s3">: </span><span class="s1">initials</span>
+                    <span class="s3">}),</span>
+                    <span class="s1">method</span><span class="s3">: </span><span class="s5">&quot;POST&quot;</span><span class="s3">,</span>
+                    <span class="s1">headers</span><span class="s3">: { </span><span class="s5">&quot;Content-Type&quot;</span><span class="s3">: </span><span class="s5">&quot;application/json&quot; </span><span class="s3">}</span>
+                <span class="s3">})).</span><span class="s1">json</span><span class="s3">();</span>
+                <span class="s1">console</span><span class="s3">.</span><span class="s1">log</span><span class="s3">(</span><span class="s1">highscores</span><span class="s3">);</span>
+
+<span class="s0">//table for high score</span>
+                <span class="s2">const </span><span class="s1">table </span><span class="s3">= </span><span class="s1">$</span><span class="s3">(</span><span class="s5">'&lt;table style=&quot;position: absolute&quot;&gt;'</span><span class="s3">);</span>
+
+                <span class="s1">table</span><span class="s3">.</span><span class="s1">append</span><span class="s3">(</span><span class="s1">$</span><span class="s3">(</span><span class="s5">'&lt;tr&gt;&lt;th&gt;Rank&lt;/th&gt;&lt;th&gt;Score&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;'</span><span class="s3">));</span>
+
+<span class="s0">//switch high score to the object entry structure</span>
+                <span class="s2">const </span><span class="s1">sortedScores </span><span class="s3">= </span><span class="s1">Object</span><span class="s3">.</span><span class="s1">entries</span><span class="s3">(</span><span class="s1">highscores</span><span class="s3">)</span>
+
+<span class="s0">//map converts to object entry structure to { score, initials }</span>
+                    <span class="s3">.</span><span class="s1">map</span><span class="s3">(</span><span class="s1">a </span><span class="s3">=&gt; ({ </span><span class="s1">score</span><span class="s3">: </span><span class="s1">a</span><span class="s3">[</span><span class="s4">1</span><span class="s3">], </span><span class="s1">initials</span><span class="s3">: </span><span class="s1">a</span><span class="s3">[</span><span class="s4">0</span><span class="s3">] }))</span>
+
+<span class="s0">//sorts are objects according to the score property (least to most)</span>
+                    <span class="s3">.</span><span class="s1">sort</span><span class="s3">((</span><span class="s1">a1</span><span class="s3">, </span><span class="s1">a2</span><span class="s3">) =&gt; </span><span class="s1">a1</span><span class="s3">.</span><span class="s1">score </span><span class="s3">&gt; </span><span class="s1">a2</span><span class="s3">.</span><span class="s1">score </span><span class="s3">? </span><span class="s4">1 </span><span class="s3">: -</span><span class="s4">1</span><span class="s3">)</span>
+
+<span class="s0">//add rank property to existing object</span>
+                    <span class="s3">.</span><span class="s1">map</span><span class="s3">((</span><span class="s1">s</span><span class="s3">, </span><span class="s1">i</span><span class="s3">) =&gt; ({</span><span class="s1">...s</span><span class="s3">, </span><span class="s1">rank</span><span class="s3">: </span><span class="s1">i </span><span class="s3">+ </span><span class="s4">1</span><span class="s3">}));</span>
+
+                <span class="s1">console</span><span class="s3">.</span><span class="s1">log</span><span class="s3">(</span><span class="s1">sortedScores</span><span class="s3">);</span>
+
+                <span class="s2">for </span><span class="s3">(</span><span class="s2">let </span><span class="s1">entry of sortedScores</span><span class="s3">) {</span>
+                    <span class="s1">table</span><span class="s3">.</span><span class="s1">append</span><span class="s3">(</span><span class="s5">`&lt;tr&gt;&lt;td&gt;</span><span class="s1">$</span><span class="s3">{</span><span class="s1">entry</span><span class="s3">.</span><span class="s1">rank</span><span class="s3">}</span><span class="s5">&lt;/td&gt;&lt;td&gt;</span><span class="s1">$</span><span class="s3">{</span><span class="s1">entry</span><span class="s3">.</span><span class="s1">score</span><span class="s3">}</span><span class="s5">&lt;/td&gt;&lt;td&gt;</span><span class="s1">$</span><span class="s3">{</span><span class="s1">entry</span><span class="s3">.</span><span class="s1">initials</span><span class="s3">}</span><span class="s5">&lt;/td&gt;&lt;/tr&gt;`</span><span class="s3">)</span>
+                <span class="s3">}</span>
+
+                <span class="s1">$</span><span class="s3">(</span><span class="s5">'body'</span><span class="s3">).</span><span class="s1">empty</span><span class="s3">().</span><span class="s1">append</span><span class="s3">(</span><span class="s1">table</span><span class="s3">);</span>
+            <span class="s3">}, </span><span class="s4">4000</span><span class="s3">);</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+<span class="s3">}</span>
+
+<span class="s2">function </span><span class="s1">startgame</span><span class="s3">() {</span>
+    <span class="s0">// clear the board to start</span>
+    <span class="s1">document</span><span class="s3">.</span><span class="s1">forms</span><span class="s3">.</span><span class="s1">rfk</span><span class="s3">.</span><span class="s1">reset</span><span class="s3">();</span>
+    <span class="s1">document</span><span class="s3">.</span><span class="s1">forms</span><span class="s3">.</span><span class="s1">hidden</span><span class="s3">.</span><span class="s1">reset</span><span class="s3">();</span>
+
+    <span class="s0">//add the items</span>
+    <span class="s2">for </span><span class="s3">(</span><span class="s1">i </span><span class="s3">= </span><span class="s4">0</span><span class="s3">; </span><span class="s1">i </span><span class="s3">&lt; </span><span class="s1">itemnum</span><span class="s3">; </span><span class="s1">i</span><span class="s3">++) {</span>
+        <span class="s1">additem</span><span class="s3">();</span>
+    <span class="s3">}</span>
+
+    <span class="s0">//add robot</span>
+    <span class="s1">additem</span><span class="s3">(</span><span class="s5">'robot'</span><span class="s3">);</span>
+<span class="s3">}</span>
+</pre>
+</body>
+</html>
